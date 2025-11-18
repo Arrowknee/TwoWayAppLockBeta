@@ -8,8 +8,7 @@ import android.view.View;
 
 
 import androidx.annotation.NonNull;
-//import androidx.recyclerview.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,26 +30,39 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.ViewHold
         View view = LayoutInflater.from(context).inflate(R.layout.app_card, viewGroup, false);
         ViewHolder viewholder = new ViewHolder(view);
 
-        return null;
+        return viewholder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull AppListAdapter.ViewHolder viewHolder, int i) {
-    viewHolder.appLogo.setImageDrawable(appList.get(i).appLogo);
-    viewHolder.appName.setText(appList.get(i).appName);
-    if(appList.get(i).appStatus){
-        viewHolder.appStatus.setImageResource(R.drawable.baseline_lock_24);
-    }
-    else{
-        viewHolder.appStatus.setImageResource(R.drawable.sharp_accessibility_24);
-    }
+        viewHolder.appLogo.setImageDrawable(appList.get(i).appLogo);
+        viewHolder.appName.setText(appList.get(i).appName);
+        if(appList.get(i).appStatus){
+            viewHolder.appStatus.setImageResource(R.drawable.baseline_lock_24);
+        } else {
+            viewHolder.appStatus.setImageResource(R.drawable.sharp_accessibility_24);
+        }
 
+        viewHolder.appStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Toggle the lock status in the data model
+                appList.get(i).appStatus = !appList.get(i).appStatus;
+                // Notify the adapter that the data for this item has changed
+                notifyItemChanged(i);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return appList.size();
     }
+
+    public List<AppInfo> getAppList() {
+        return appList;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView appLogo, appStatus;
         TextView appName;
