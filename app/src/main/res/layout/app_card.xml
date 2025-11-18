@@ -2,16 +2,18 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="5">
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:padding="8dp"
             android:src="@mipmap/ic_launcher"
             android:id="@+id/app_logo"
             >
@@ -19,18 +21,20 @@
 
         <TextView
             android:id="@+id/app_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="App_name"
+            android:layout_weight="3"
             android:gravity="center_vertical"
-            android:textStyle="bold"
-            android:layout_weight="3">
+            android:text="App_name"
+            android:textStyle="bold">
 
         </TextView>
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:padding="16dp"
             android:src="@mipmap/ic_launcher"
             android:id="@+id/app_status"
             >

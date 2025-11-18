@@ -6,24 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     >
-<androidx.recyclerview.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-</androidx.recyclerview.widget.RecyclerView>
 
-    <android.support.design.widget.FloatingActionButton
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/app_list"
+        android:layout_margin="15dp"
+
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
+        android:layout_margin="30dp"
         android:id="@+id/ok_btn"
         android:src="@drawable/baseline_done_24"
         android:tint="@color/white"
         android:padding="16dp"
-        android:backgroundTint="@color/material_on_background_disabled"
+        android:backgroundTint="@color/black"
+        android:contentDescription="@string/app_name"
         >
 
-    </android.support.design.widget.FloatingActionButton>
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </FrameLayout>
 
