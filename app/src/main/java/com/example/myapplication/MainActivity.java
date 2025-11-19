@@ -27,30 +27,55 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
     RecyclerView app_list;
     FloatingActionButton ok_btn;
+    Button appListButton;
     AppListAdapter adapter;
+
+    MainActivity itself;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test21);
-        app_list = findViewById(R.id.app_list);
-        ok_btn = findViewById(R.id.ok_btn);
-        app_list.setLayoutManager(new LinearLayoutManager(this));
-        requestPermissions();
-        loadAppList();
-
-        ok_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
+        setContentView(R.layout.main_app_layout);
+        appListButton = findViewById(R.id.unlock_button);
+        itself = this;
+        appListButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                saveLockedApps();
-//                setContentView(R.layout.main_app_layout);
-                if (!isAccessibilityServiceEnabled()) {
-                    Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
-                    startActivity(intent);
-                }
+                setContentView(R.layout.test21);
+                app_list = findViewById(R.id.app_list);
+                ok_btn = findViewById(R.id.ok_btn);
+                app_list.setLayoutManager(new LinearLayoutManager(itself));
+                requestPermissions();
 
+                loadAppList();
+
+                ok_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        saveLockedApps();
+//                setContentView(R.layout.main_app_layout);
+                        if (!isAccessibilityServiceEnabled()) {
+                            Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                            startActivity(intent);
+                        }
+
+                    }
+                });
+//          Intent intent = new Intent(Layout)
             }
         });
+
+//        ok_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                saveLockedApps();
+////                setContentView(R.layout.main_app_layout);
+//                if (!isAccessibilityServiceEnabled()) {
+//                    Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+//                    startActivity(intent);
+//                }
+//
+//            }
+//        });
 
 //        Button unlockAll = findViewById(R.id.unlock_button);
 //        unlockAll.setOnClickListener(new View.OnClickListener() {

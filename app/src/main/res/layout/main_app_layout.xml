@@ -19,19 +19,28 @@
 
     ]]>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Screen time"
+        tools:layout_editor_absoluteX="151dp"
+        tools:layout_editor_absoluteY="99dp">
+
+    </TextView>
+
     <Button
         android:id="@+id/unlock_button"
         android:layout_width="259dp"
         android:layout_height="70dp"
-        android:layout_marginStart="76dp"
+        android:layout_marginStart="84dp"
         android:layout_marginEnd="50dp"
         android:rotation="0"
         android:rotationX="0"
-        android:text="Unlock all"
+        android:text="Toggle apps to Lock"
         app:layout_constraintEnd_toStartOf="@+id/recyclerView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="288dp" />
+        tools:layout_editor_absoluteY="282dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
