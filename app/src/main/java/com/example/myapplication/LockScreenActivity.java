@@ -12,13 +12,16 @@ public class LockScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lock_layout_1);
         System.out.println("Attempt to pull layout");
+//TODO: Add a usable clickable button
 
-//        Button unlockButton = findViewById(R.id.unlock_button);
-//        unlockButton.setOnClickListener(new View.OnClickListener() {
+//        Button returnButton = findViewById(R.id.return_button);
+//        returnButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-////                finish();
+//
+//                finish();
 //            }
 //        });
     }
+
 }

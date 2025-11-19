@@ -5,18 +5,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.accessibility.AccessibilityEvent;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-
+//This time using accessibilityServices to explicitly gain permission to spot device and app changes.
 public class AppLockAccessibilityService extends AccessibilityService {
 
     private Set<String> lockedApps;
+    private List<AppInfo> appinfoList;
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         if (event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
             if (event.getPackageName() != null) {
                 String packageName = event.getPackageName().toString();
-                System.out.println("Package Name(OnAccessibilityEvent) : " + packageName);
+                System.out.println("Package Name(OnAccessibilityEvent): " + packageName);
                 updateLockedApps();
                 
                 if (lockedApps != null && lockedApps.contains(packageName)) {
@@ -25,7 +27,6 @@ public class AppLockAccessibilityService extends AccessibilityService {
                         System.out.println("Attempt to lock");
                         Intent intent = new Intent(this, LockScreenActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        intent.addFlags(Intent.);
                         startActivity(intent);
                     }
                 }

@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.view.accessibility.AccessibilityManager;
+import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,13 +43,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveLockedApps();
-                setContentView(R.layout.main_app_layout);
+//                setContentView(R.layout.main_app_layout);
                 if (!isAccessibilityServiceEnabled()) {
                     Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
                     startActivity(intent);
                 }
+
             }
         });
+
+//        Button unlockAll = findViewById(R.id.unlock_button);
+//        unlockAll.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v){
+//                for(AppInfo appInfo : adapter.getAppList()){
+//                    appInfo.appStatus = false;
+//                }
+//                adapter.notifyDataSetChanged();
+//                }
+//            });
     }
 
     public void loadAppList(){
