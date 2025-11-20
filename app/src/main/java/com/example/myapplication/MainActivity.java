@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.app.AppOpsManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_app_layout);
         appListButton = findViewById(R.id.unlock_button);
         itself = this;
+        //TODO: INEFFICIENT ANONYMOUS FUNCTION(S) BECAUSE IT WAS EASY TO WRITE, FIX LATER.
         appListButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 setContentView(R.layout.test21);
@@ -63,6 +65,25 @@ public class MainActivity extends AppCompatActivity {
 //          Intent intent = new Intent(Layout)
             }
         });
+        //TODO: IMPLEMENT PROPER SCREEN TIME MEASURE, THAT CAN MEASURE DEVICE ON AND OFF TIME AS WELL.
+        BroadcastReceiver receiver = new BroadcastReceiver(){
+            long startTimer;
+            long endTimer;
+            long time;
+            @Override
+            public void onReceive(Context context, Intent intent){
+             if(intent.getAction() != null && intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
+                 startTimer = System.currentTimeMillis();
+             }
+             else if(intent.getAction().equals(Intent.ACTION_SCREEN_OFF)){
+                 endTimer = System.currentTimeMillis();
+                 time = endTimer - startTimer;
+                 if(time < 5000){
+                     //TODO: put something here.
+                 }
+             }
+            }
+        };
 
 //        ok_btn.setOnClickListener(new View.OnClickListener() {
 //            @Override
